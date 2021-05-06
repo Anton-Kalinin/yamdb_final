@@ -57,9 +57,10 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
           script: |
-            sudo docker pull anton-kalinin/yamdb_final
-            sudo docker stop $(sudo docker ps -a -q)
-            sudo docker run --rm -d -p 5000:5000 anton-kalinin/yamdb_final
+            sudo docker system prune -f
+            sudo docker pull ${{ secrets.DOCKER_USERNAME }}/yamdb_final:latest
+            sudo docker-compose -f /home/${{ secrets.USER }}/web/docker-compose.yaml down 
+            sudo docker-compose -f /home/${{ secrets.USER }}/web/docker-compose.yaml up -d
 
   send_message:
     runs-on: ubuntu-latest
