@@ -42,7 +42,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: onetonyk/api_yamdb_final:latest
+          tags: onetonyk/yamdb_final:latest
 
   deploy:
     name: Deploy to 
