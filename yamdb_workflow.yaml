@@ -57,10 +57,10 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
           script: |
-            sudo rm -r yamdb_final -f
-            sudo git clone https://github.com/Anton-Kalinin/yamdb_final.git
-            cd yamdb_final
-            sudo docker-compose up --build -d
+            sudo docker pull onetonyk/yamdb_final
+            sudo docker stop $(sudo docker ps -a -q)
+            sudo docker run --rm -d -p 5000:5000 onetonyk/yamdb_final
+
 
   send_message:
     runs-on: ubuntu-latest
