@@ -5,7 +5,13 @@ API YaMDb - это база данных фильмов, книг, музыки,
 Python 3, Django REST FrameWork, PostgreSQL, Docker.
 # Запуск
 Для запуска проекта необходимо развернуть несколько контейнеров:
-''' docker-compose up '''
+``` docker-compose up ```
 
 Далее следует применить миграции с помощью:
-''' docker-compose exec web python manage.py migrate --noinput '''
+``` docker-compose exec web python manage.py migrate --noinput ```
+
+Потом надо собрать статику комантдой:
+``` docker-compose exec web python manage.py collectstatic ```
+
+## Ссылка на развернутый проект
+[YaMDb](http://84.201.176.77/api/v1/)
